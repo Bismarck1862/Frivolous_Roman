@@ -14,4 +14,6 @@ public class Statics
     public static int AliensLifesStart = 3;
     public static int Ammo1Start = 40;
     public static int Ammo2Start = 20;
+
+    public static int Score = 0;
 }
