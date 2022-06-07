@@ -35,6 +35,5 @@ public class MenuController : MonoBehaviour
     void Update()
     {
         Statics.difficulty = difficulty.value;
-        Debug.Log(difficulty.options[difficulty.value].text);
     }
 }
