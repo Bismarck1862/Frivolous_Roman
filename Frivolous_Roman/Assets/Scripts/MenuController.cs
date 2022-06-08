@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour
         Statics.AliensLifes = Statics.AliensLifesStart;
         Statics.Ammo1 = Statics.Ammo1Start;
         Statics.Ammo2 = Statics.Ammo2Start;
+        Statics.fuel = Statics.fuelStart;
 
         //difficulty = GetComponent<Dropdown>();
     }
