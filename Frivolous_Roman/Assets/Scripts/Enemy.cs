@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject Player;
 
     public float EnemySeeDistance = 20.0f;
-    public float EnemyAttackDistance = 2.0f;
+    public float EnemyAttackDistance = 3.0f;
 
     public Animator animator;
 
@@ -28,10 +28,13 @@ public class Enemy : MonoBehaviour
             Walk(false);
             animator.SetBool("attack", false);
             _agent.isStopped = true;
+            animator.SetBool("getHit", false);
         }
         else
         {
             bool attack = distance < EnemyAttackDistance;
+            Debug.Log(distance);
+            Debug.Log(attack);
             animator.SetBool("attack", attack);
             Walk(!attack);
             _agent.isStopped = attack;

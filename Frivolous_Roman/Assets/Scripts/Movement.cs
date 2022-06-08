@@ -35,6 +35,18 @@ public class Movement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityForce);
         }
+        else
+        {
+            if(Input.GetButtonDown("Jump") && Statics.fuel > 0){
+                Statics.fuel -= 1;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityForce);
+            }
+        }
+
+        if (isGrounded && Statics.fuel < Statics.fuelStart)
+        {
+            Statics.fuel += 1;
+        }
         velocity.y += gravityForce * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
