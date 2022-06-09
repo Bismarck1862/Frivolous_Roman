@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
     public float health = 30f;
     public Animator animator;
     
-    private float delay = 2.0f;
+    private float delay = 3.0f;
 
     void Start()
     {
@@ -16,17 +16,17 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        animator.SetBool("getHit", true);
         if (health <= 0f)
         {
+            animator.SetTrigger("die");
             Die();
         }
+        else animator.SetTrigger("hit");
     }
+
 
     void Die()
     {
-        animator.SetBool("getHit", false);
-        animator.SetBool("die", true);
         Statics.Score += 1;
         Destroy(gameObject, delay);
     }

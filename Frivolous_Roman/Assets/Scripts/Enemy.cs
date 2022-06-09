@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject Player;
 
     public float EnemySeeDistance = 20.0f;
-    public float EnemyAttackDistance = 3.0f;
+    public float EnemyAttackDistance = 2.5f;
 
     public Animator animator;
 
@@ -19,41 +19,37 @@ public class Enemy : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
+   
+
     void Update()
     {
         float distance = Vector3.Distance(transform.position, Player.transform.position);
-
-        if (animator.GetBool("getHit") || animator.GetBool("die"))
         {
-            Walk(false);
-            animator.SetBool("attack", false);
-            _agent.isStopped = true;
-            animator.SetBool("getHit", false);
-        }
-        else
-        {
-            bool attack = distance < EnemyAttackDistance;
-            Debug.Log(distance);
-            Debug.Log(attack);
-            animator.SetBool("attack", attack);
-            Walk(!attack);
-            _agent.isStopped = attack;
+            if (distance < EnemyAttackDistance)
+            {
+                Attack(true);
+                Walk(false);
+                _agent.isStopped = true;
+            }
 
             if (distance < EnemySeeDistance && distance > EnemyAttackDistance)
             {
                 Vector3 dirToPlayer = Player.transform.position - transform.position;
                 Vector3 newPos = transform.position + dirToPlayer;
+                Attack(false);
                 Walk(true);
+                _agent.isStopped = false;
                 _agent.SetDestination(newPos);
             }
-            else
+
+            if (distance >= EnemySeeDistance)
             {
                 Walk(false);
+                Attack(false);
                 _agent.isStopped = true;
             }
+
         }
-
-
     }
 
     private void Walk(bool value)
@@ -68,10 +64,17 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("sth");
         if (col.gameObject.tag == "Player" && animator.GetBool("attack"))
         {
             Debug.Log("player");
+            HealthAndFuel target = col.transform.GetComponent<HealthAndFuel>();
+            StartCoroutine(TakeLife(target));
         }
+    }
+
+    private IEnumerator TakeLife(HealthAndFuel target)
+    {
+        yield return new WaitForSeconds(2f);
+        target.TakeDamage(1);
     }
 }
