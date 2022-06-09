@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject Player;
 
     public float EnemySeeDistance = 20.0f;
-    public float EnemyAttackDistance = 3.0f;
+    public float EnemyAttackDistance = 2.5f;
 
     public Animator animator;
 
@@ -24,14 +24,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, Player.transform.position);
-
-        if (animator.GetBool("getHit") || animator.GetBool("die"))
-        {
-            Walk(false);
-            Attack(false);
-            _agent.isStopped = true;
-        }
-        else
         {
             if (distance < EnemyAttackDistance)
             {
@@ -72,10 +64,17 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("sth");
         if (col.gameObject.tag == "Player" && animator.GetBool("attack"))
         {
             Debug.Log("player");
+            HealthAndFuel target = col.transform.GetComponent<HealthAndFuel>();
+            StartCoroutine(TakeLife(target));
         }
+    }
+
+    private IEnumerator TakeLife(HealthAndFuel target)
+    {
+        yield return new WaitForSeconds(2f);
+        target.TakeDamage(1);
     }
 }

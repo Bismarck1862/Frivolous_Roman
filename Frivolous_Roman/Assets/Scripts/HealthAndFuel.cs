@@ -17,9 +17,10 @@ public class HealthAndFuel : MonoBehaviour
     void Update()
     {
         fuelBar.Set(Statics.fuel);
+        healthBar.Set(Statics.HeroLifes);
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         Statics.HeroLifes -= damage;
         healthBar.Set(Statics.HeroLifes);
@@ -32,21 +33,6 @@ public class HealthAndFuel : MonoBehaviour
     void Die()
     {
         SceneManager.LoadScene("Menu");
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        Debug.Log("hit");
-        if (col.gameObject.tag == "Enemy")
-        {   
-            StartCoroutine(TakeLife());
-        }
-    }
-
-    private IEnumerator TakeLife()
-    {
-        TakeDamage(1);
-        yield return new WaitForSeconds(2f);
     }
 
 }

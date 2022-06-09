@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
     public float health = 30f;
     public Animator animator;
     
-    private float delay = 2.0f;
+    private float delay = 3.0f;
 
     void Start()
     {
@@ -18,27 +18,11 @@ public class Target : MonoBehaviour
         health -= amount;
         if (health <= 0f)
         {
-            StartCoroutine(DieCor());
+            animator.SetTrigger("die");
+            Die();
         }
-        else StartCoroutine(GetHit());
+        else animator.SetTrigger("hit");
     }
-
-    IEnumerator GetHit()
-    {
-        animator.SetBool("getHit", true);
-        yield return new WaitForSeconds(0.8f);
-        animator.SetBool("getHit", false);
-    }
-
-    IEnumerator DieCor()
-    {
-        animator.SetBool("die", true);
-        animator.SetBool("getHit", false);
-        yield return new WaitForSeconds(2);
-        animator.SetBool("die", false);
-        Die();
-    }
-
 
 
     void Die()
