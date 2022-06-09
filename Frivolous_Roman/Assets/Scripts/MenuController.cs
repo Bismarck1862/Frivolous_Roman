@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Quit()

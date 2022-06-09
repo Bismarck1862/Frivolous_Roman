@@ -16,17 +16,33 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        animator.SetBool("getHit", true);
         if (health <= 0f)
         {
-            Die();
+            StartCoroutine(DieCor());
         }
+        else StartCoroutine(GetHit());
     }
+
+    IEnumerator GetHit()
+    {
+        animator.SetBool("getHit", true);
+        yield return new WaitForSeconds(0.8f);
+        animator.SetBool("getHit", false);
+    }
+
+    IEnumerator DieCor()
+    {
+        animator.SetBool("die", true);
+        animator.SetBool("getHit", false);
+        yield return new WaitForSeconds(2);
+        animator.SetBool("die", false);
+        Die();
+    }
+
+
 
     void Die()
     {
-        animator.SetBool("getHit", false);
-        animator.SetBool("die", true);
         Statics.Score += 1;
         Destroy(gameObject, delay);
     }

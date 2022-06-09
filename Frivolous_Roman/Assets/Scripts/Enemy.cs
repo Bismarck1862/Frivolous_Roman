@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
+   
+
     void Update()
     {
         float distance = Vector3.Distance(transform.position, Player.transform.position);
@@ -26,34 +28,36 @@ public class Enemy : MonoBehaviour
         if (animator.GetBool("getHit") || animator.GetBool("die"))
         {
             Walk(false);
-            animator.SetBool("attack", false);
+            Attack(false);
             _agent.isStopped = true;
-            animator.SetBool("getHit", false);
         }
         else
         {
-            bool attack = distance < EnemyAttackDistance;
-            Debug.Log(distance);
-            Debug.Log(attack);
-            animator.SetBool("attack", attack);
-            Walk(!attack);
-            _agent.isStopped = attack;
+            if (distance < EnemyAttackDistance)
+            {
+                Attack(true);
+                Walk(false);
+                _agent.isStopped = true;
+            }
 
             if (distance < EnemySeeDistance && distance > EnemyAttackDistance)
             {
                 Vector3 dirToPlayer = Player.transform.position - transform.position;
                 Vector3 newPos = transform.position + dirToPlayer;
+                Attack(false);
                 Walk(true);
+                _agent.isStopped = false;
                 _agent.SetDestination(newPos);
             }
-            else
+
+            if (distance >= EnemySeeDistance)
             {
                 Walk(false);
+                Attack(false);
                 _agent.isStopped = true;
             }
+
         }
-
-
     }
 
     private void Walk(bool value)
