@@ -10,4 +10,15 @@ public class PlotNextScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ToGame()
+    {
+        SceneManager.LoadScene("FirstPlot");
+    }
+
 }

@@ -45,7 +45,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            Debug.Log(cam.transform.position.ToString() + " " + cam.transform.forward.ToString());
+            /*Debug.Log(cam.transform.position.ToString() + " " + cam.transform.forward.ToString());*/
         }
     }
 }
