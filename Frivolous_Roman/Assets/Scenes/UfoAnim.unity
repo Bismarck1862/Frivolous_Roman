@@ -1764,15 +1764,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2021178655527167927, guid: bf1466a4e69175d419707bee5ff2f552, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.6
+      value: -31.2
       objectReference: {fileID: 0}
     - target: {fileID: -2021178655527167927, guid: bf1466a4e69175d419707bee5ff2f552, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: -2021178655527167927, guid: bf1466a4e69175d419707bee5ff2f552, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.5
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: -2021178655527167927, guid: bf1466a4e69175d419707bee5ff2f552, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1844,6 +1844,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &338781227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338781225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53a607595fc6aa49b224018b8f99fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &341062853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4937245984388714, guid: 295d4fe610e3f6e458553690239006ce, type: 3}
