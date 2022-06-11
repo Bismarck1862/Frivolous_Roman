@@ -11,7 +11,12 @@ public class PlotNextScene : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void ToMenu()
+    void Update()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+        public void ToMenu()
     {
         SceneManager.LoadScene("Menu");
     }
