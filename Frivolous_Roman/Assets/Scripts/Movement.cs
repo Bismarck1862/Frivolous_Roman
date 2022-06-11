@@ -30,7 +30,6 @@ public class Movement : MonoBehaviour
 
         Vector3 move = transform.right * hor + transform.forward * ver;
         controller.Move(move * speed * Time.deltaTime);
-
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityForce);
@@ -43,7 +42,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (isGrounded && Statics.fuel < Statics.fuelStart)
+        if (isGrounded && Statics.fuel < Statics.fuelStartDiff)
         {
             Statics.fuel += 1;
         }

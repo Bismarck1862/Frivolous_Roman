@@ -10,8 +10,8 @@ public class HealthAndFuel : MonoBehaviour
 
     void Start()
     {
-        healthBar.SetMax(Statics.HeroLifesStart);
-        fuelBar.SetMax(Statics.fuelStart);
+        healthBar.SetMax(Statics.HeroLifes);
+        fuelBar.SetMax(Statics.fuel);
     }
 
     void Update()

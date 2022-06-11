@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [Header("Settings")]
-    public float damage = 10f;
+    private float damage = 1f;
     public float range = 100f;
 
     public AudioSource shootSound;

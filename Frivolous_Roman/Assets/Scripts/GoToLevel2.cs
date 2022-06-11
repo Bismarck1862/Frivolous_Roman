@@ -16,6 +16,12 @@ public class GoToLevel2 : MonoBehaviour
     // Update is called once per frame
     void GoToNextScene()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Statics.fuel = Statics.fuelStartDiff;
+        Statics.Ammo1 = Statics.Ammo1StartDiff;
+        Statics.Ammo2 = Statics.Ammo2StartDiff;
+        Statics.AliensLifes = Statics.AliensLifesStartDiff;
+        Statics.HeroLifes = Statics.HeroLifesStartDiff;
         SceneManager.LoadScene(4);
     }
 }
