@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health = 30f;
+    private float health = 2;
     public Animator animator;
     
     private float delay = 3.0f;
 
     void Start()
     {
+        health = Statics.AliensLifes;
+        Debug.Log(health);
     }
 
     public void TakeDamage(float amount)
