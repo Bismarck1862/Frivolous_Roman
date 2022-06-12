@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public int currentAidKit;
     public int currentAmmo;
+    public int currentAmmo2;
 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,10 @@ public class GameManager : MonoBehaviour
     public void AddAmmo(int toAdd)
     {
         currentAmmo += toAdd;
+    }
+
+    public void AddAmmo2(int toAdd)
+    {
+        currentAmmo2 += toAdd;
     }
 }
