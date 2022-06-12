@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator TakeLife(HealthAndFuel target)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         target.TakeDamage(1);
     }
 

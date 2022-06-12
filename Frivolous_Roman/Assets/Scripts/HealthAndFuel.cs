@@ -32,7 +32,7 @@ public class HealthAndFuel : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("EndScene");
     }
 
 }
