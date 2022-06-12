@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject Player;
 
-    public float EnemySeeDistance = 20.0f;
-    public float EnemyAttackDistance = 2.5f;
+    private float EnemySeeDistance = 50.0f;
+    private float EnemyAttackDistance = 2.5f;
 
     public Animator animator;
 
@@ -66,7 +66,6 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" && animator.GetBool("attack"))
         {
-            Debug.Log("player");
             HealthAndFuel target = col.transform.GetComponent<HealthAndFuel>();
             StartCoroutine(TakeLife(target));
         }
@@ -76,5 +75,11 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         target.TakeDamage(1);
+    }
+
+    public void Die()
+    {
+        _agent.isStopped = true;
+        _agent.velocity = Vector3.zero;
     }
 }

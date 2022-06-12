@@ -6,13 +6,14 @@ public class Target : MonoBehaviour
 {
     private float health = 2;
     public Animator animator;
-    
+    public Enemy enemy;
+
     private float delay = 3.0f;
 
     void Start()
     {
         health = Statics.AliensLifes;
-        Debug.Log(health);
+        enemy = GetComponent<Enemy>();
     }
 
     public void TakeDamage(float amount)
@@ -29,6 +30,7 @@ public class Target : MonoBehaviour
 
     void Die()
     {
+        enemy.Die();
         Statics.Score += 1;
         Destroy(gameObject, delay);
     }

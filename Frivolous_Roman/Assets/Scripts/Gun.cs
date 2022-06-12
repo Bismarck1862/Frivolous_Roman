@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [Header("Settings")]
-    private float damage = 1f;
-    public float range = 100f;
 
     public AudioSource shootSound;
     public AudioSource emptySound;
@@ -15,10 +12,13 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Statics.IsGameActive)
         {
-            if(Statics.Ammo1 > 0){
-                Shoot();
+            if(Statics.ActiveWeapon == 1 && Statics.Ammo1 > 0){
+                Shoot(1f, 50f);
+            }else if (Statics.ActiveWeapon == 2 && Statics.Ammo2 > 0)
+            {
+                Shoot(2f, 100f);
             }
             else
             {
@@ -27,10 +27,11 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void Shoot(float damage, float range)
     {
         shootSound.Play();
-        Statics.Ammo1 -= 1;
+        if(Statics.ActiveWeapon == 1)Statics.Ammo1 -= 1;
+        if(Statics.ActiveWeapon == 2) Statics.Ammo2 -= 1;
 
 
         RaycastHit hit;
