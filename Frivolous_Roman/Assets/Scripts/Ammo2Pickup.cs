@@ -13,7 +13,7 @@ public class Ammo2Pickup : MonoBehaviour
         {
             FindObjectOfType<GameManager>().AddAmmo2(value);
             audioSource.Play();
-            //Statics.Ammo2 += 10;
+            Statics.Ammo2 += 10;
 
             Destroy(gameObject);
         }
