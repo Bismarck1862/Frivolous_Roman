@@ -283,8 +283,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 7221959438801007795}
   Player: {fileID: 0}
-  EnemySeeDistance: 20
-  EnemyAttackDistance: 3
   animator: {fileID: 95000013290184230}
 --- !u!114 &5263826832525309583
 MonoBehaviour:
@@ -298,8 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f452ef74a6d59c4fbc2a27616cfc005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
   animator: {fileID: 95000013290184230}
+  enemy: {fileID: 3619270448980013882}
 --- !u!1 &1000010415932204
 GameObject:
   m_ObjectHideFlags: 0

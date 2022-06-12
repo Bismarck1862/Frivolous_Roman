@@ -26,4 +26,7 @@ public class Statics
     public static int fuelStartDiff = 6;
 
     public static int Score = 0;
+
+    public static bool IsGameActive = true;
+    public static int ActiveWeapon = 1;
 }

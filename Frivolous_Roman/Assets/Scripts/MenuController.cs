@@ -13,6 +13,8 @@ public class MenuController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         SetDifficulty(difficulty.value);
+        Statics.IsGameActive = true;
+        Time.timeScale = 1f;
     }
 
     public void ChangeScene()
